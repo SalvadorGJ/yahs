@@ -108,6 +108,10 @@ long physmem_total(void)
 
 long physmem_avail(void)
 {
+    const char * val = getenv( "SLURM_MEM_PER_NODE" );
+    if (val != NULL) {
+        return atol(val)*1024*1024;
+    }
     #if defined _SC_AVPHYS_PAGES && defined _SC_PAGESIZE
     {
         /* This works on linux-gnu, solaris2 and cygwin */

@@ -112,6 +112,7 @@ long physmem_avail(void)
     if (val != NULL) {
         return atol(val)*1024*1024;
     }
+    
     #if defined _SC_AVPHYS_PAGES && defined _SC_PAGESIZE
     {
         /* This works on linux-gnu, solaris2 and cygwin */
